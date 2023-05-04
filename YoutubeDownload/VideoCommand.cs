@@ -2,5 +2,5 @@
 
 abstract class VideoCommand
 {
-    public abstract void Run(string videoURL);
+    public abstract Task Run(string videoURL);
 }

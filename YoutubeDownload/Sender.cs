@@ -15,9 +15,9 @@
         }
 
         // Выполнить
-        public void Run()
+        public async Task Run()
         {
-            _command.Run(_videoURL);
+            await _command.Run(_videoURL);
         }
     }
 }

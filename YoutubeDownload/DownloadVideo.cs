@@ -16,10 +16,10 @@ namespace YoutubeDownload
             this.receiver = receiver;
         }
 
-        public async override void Run(string videoURL)
+        public override async Task Run(string videoURL)
         {
             var progress = new Progress<double>();
-            progress.ProgressChanged += (s, e) => Debug.WriteLine($"Загружено: {e:P2}");
+            progress.ProgressChanged += (s, e) => Console.WriteLine($"Загружено: {e:P2}");
 
             var streamManifest = await receiver.client.Videos.Streams.GetManifestAsync(videoURL);
             var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();

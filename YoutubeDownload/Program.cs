@@ -1,4 +1,5 @@
 ﻿using CliWrap;
+using System.Text;
 using YoutubeExplode.Converter;
 using YoutubeExplode.Search;
 
@@ -6,7 +7,7 @@ namespace YoutubeDownload
 {
     internal partial class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // создаем строку со ссылкой на видео
             string videoURL = "https://www.youtube.com/watch?v=jNQXAC9IVRw";
@@ -24,17 +25,22 @@ namespace YoutubeDownload
             // инициализация команды для отображения информации о видео
             sender.SetCommand(showVideoDesc, videoURL);
 
+
             // выполнение команды
-            sender.Run();
+            await Run(sender);
 
             // инициализация команды для скачивания видео
             sender.SetCommand(downloadVideo, videoURL);
 
             // выполнение команды
-            sender.Run();
+            await Run(sender);
 
             Console.WriteLine("Успешно!");
             Console.ReadKey();
+        }
+        public static async Task Run(Sender sender)
+        {
+            await sender.Run();
         }
     }
 }

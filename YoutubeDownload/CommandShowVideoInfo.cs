@@ -16,9 +16,10 @@ namespace YoutubeDownload
         }
 
         // Выполнить
-        public override void Run(string videoURL)
+        public override async Task Run(string videoURL)
         {
-            Video video = receiver.client.Videos.GetAsync(videoURL).Result;
+            Video video;
+            video = await receiver.client.Videos.GetAsync(videoURL);
             Console.WriteLine(
                 $"Video name: {video.Title}" +
                 $"\n\nDescription of video:\n{video.Description}"
